@@ -1,8 +1,10 @@
 import React from "react";
-import { useProductsContext } from "../context/ProductContext";
+import Products from "../components/products/Products";
 
 export default function ProductsPage() {
-  const { products } = useProductsContext();
-
-  return <div>productsPage</div>;
+  return (
+    <section>
+      <Products />
+    </section>
+  );
 }

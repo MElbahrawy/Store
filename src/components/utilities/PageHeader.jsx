@@ -9,11 +9,13 @@ export default function PageHeader({ title = "page", product }) {
           <Link className="text-blue-600" to="/">
             Home
           </Link>{" "}
-          /{" "}
           {product && (
-            <Link className="text-blue-600" to="/products">
-              products
-            </Link>
+            <>
+              /{" "}
+              <Link className="text-blue-600" to="/products">
+                products
+              </Link>
+            </>
           )}{" "}
           / {title}
         </h2>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Btn from "../utilities/Btn";
 
-export default function ProductAction() {
+export default function ProductAction({ colors = [], stock = 0 }) {
   const [quantity, setQuantity] = useState(1);
-  const colors = ["#000", "#ff0", "#f00", "#0f0", "#00f"];
+  const [Color, setColor] = useState(colors[0]);
 
   const increase = () => {
-    setQuantity((prev) => (prev < 10 ? prev + 1 : prev));
+    setQuantity((prev) => (prev < stock ? prev + 1 : prev));
   };
   const decrease = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : prev));
@@ -21,6 +21,7 @@ export default function ProductAction() {
               key={color}
               className="inline-block my-auto w-5 h-5 rounded-full border border-gray-500 mr-2"
               style={{ backgroundColor: color }}
+              onClick={() => setColor(color)}
             ></span>
           ))}
         </div>
