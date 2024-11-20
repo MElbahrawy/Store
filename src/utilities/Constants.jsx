@@ -6,6 +6,9 @@ export const GET_SINGLE_PRODUCT_SUCCESS = "GET_SINGLE_PRODUCT_SUCCESS";
 export const GET_SINGLE_PRODUCT_ERROR = "GET_SINGLE_PRODUCT_ERROR";
 export const SHOW_GRID = "SHOW_GRID";
 export const SHOW_LIST = "SHOW_LIST";
+export const GET_SORT = "GET_SORT";
+export const SET_SORT = "SET_SORT";
+export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 
 export const allProductsUrl = "https://www.course-api.com/react-store-products";
 export const productUrl =

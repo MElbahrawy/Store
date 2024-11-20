@@ -21,7 +21,7 @@ export default function ProductsView() {
           ></i>
         </button>
       </div>
-      <p>15 Products Found</p>
+      <p>{state.filteredProducts.length} Products Found</p>
     </div>
   );
 }

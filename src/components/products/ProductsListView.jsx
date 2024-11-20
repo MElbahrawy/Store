@@ -1,9 +1,6 @@
-import { useProductsContext } from "../../context/ProductContext";
 import ProductListCard from "../utilities/ProductListCard";
 
-export default function ProductsListView() {
-  const { products } = useProductsContext();
-
+export default function ProductsListView({ products }) {
   return (
     <div>
       {products && (
