@@ -12,20 +12,20 @@ export default function Card({ product }) {
           alt="product image"
         />
       </Link>
-      <div className="px-5 mb-5">
+      <div className="px-2 mb-5">
         <Link to={`/products/${product?.id}`}>
-          <h5 className="text-xl my-3 font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-lg whitespace-nowrap overflow-clip my-2 font-semibold tracking-tight text-gray-900 dark:text-white">
             {product?.name}
           </h5>
         </Link>
 
-        <div className="flex items-center justify-between">
-          <span className="text-xl  text-gray-900 dark:text-white">
+        <div className="flex flex-wrap items-center justify-between">
+          <span className="text-md mb-3  text-gray-900 dark:text-white">
             {useFormatNum(product?.price)}
           </span>
           <a
             href="#"
-            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-600"
+            className="text-white sm:w-full bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-blue-600"
           >
             Add to cart
           </a>

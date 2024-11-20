@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Btn from "../utilities/Btn";
+import ColorBtn from "../utilities/ColorBtn";
 
 export default function ProductAction({ colors = [], stock = 0 }) {
   const [quantity, setQuantity] = useState(1);
-  const [Color, setColor] = useState(colors[0]);
+  const [mainColor, setMainColor] = useState(colors[0]);
 
   const increase = () => {
     setQuantity((prev) => (prev < stock ? prev + 1 : prev));
@@ -15,14 +16,14 @@ export default function ProductAction({ colors = [], stock = 0 }) {
     <div>
       <p className="my-4 flex gap-5 items-center">
         <div className="font-bold">Colors: </div>
-        <div>
+        <div id="colors" className="flex">
           {colors.map((color) => (
-            <span
+            <ColorBtn
+              color={color}
+              mainColor={mainColor}
+              setMainColor={setMainColor}
               key={color}
-              className="inline-block my-auto w-5 h-5 rounded-full border border-gray-500 mr-2"
-              style={{ backgroundColor: color }}
-              onClick={() => setColor(color)}
-            ></span>
+            />
           ))}
         </div>
       </p>
