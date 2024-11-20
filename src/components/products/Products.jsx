@@ -16,17 +16,20 @@ export default function Products() {
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-6 my-20">
         {products_loading && <LoadingSpinner />}
         {products_error && <Error />}
-        {/*  */}
-        <ProductsDrawer />
-        <ProductsFilter className="hidden sm:block" />
-        <div className="flex-1">
-          <div className="flex items-center gap-3 mb-5">
-            <ProductsView />
-            <hr className="flex-1 border-black border-2" />
-            <ProductsSort />
-          </div>
-          <ProductsContainer />
-        </div>
+        {!products_loading && (
+          <>
+            <ProductsDrawer />
+            <ProductsFilter className="hidden sm:block" />
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-5">
+                <ProductsView />
+                <hr className="flex-1 border-black border-2" />
+                <ProductsSort />
+              </div>
+              <ProductsContainer />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
