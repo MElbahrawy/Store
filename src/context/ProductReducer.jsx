@@ -32,6 +32,7 @@ export const productReducer = (state, action) => {
     case GET_SINGLE_PRODUCT_BEGIN:
       return {
         ...state,
+        single_product: {},
         single_product_loading: true,
         single_product_error: false,
       };
