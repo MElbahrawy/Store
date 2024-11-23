@@ -1,4 +1,6 @@
 import {
+  CLEAR_FILTERS,
+  GET_FILTERS,
   GET_SORT,
   LOAD_PRODUCTS,
   SET_SORT,
@@ -12,12 +14,16 @@ export default function FilterAndSortReducer(state, action) {
       return { ...state, gridView: true };
     case SHOW_LIST:
       return { ...state, gridView: false };
-    case LOAD_PRODUCTS:
+    case LOAD_PRODUCTS: {
+      const price = action.payload.map((prod) => prod.price);
+      const maxPrice = Math.max(...price);
       return {
         ...state,
         products: [...action.payload],
         filteredProducts: [...action.payload],
+        filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice },
       };
+    }
     case GET_SORT:
       return { ...state, sort: action.payload };
     case SET_SORT: {
@@ -33,6 +39,27 @@ export default function FilterAndSortReducer(state, action) {
       }
       return { ...state, filteredProducts: tempArr };
     }
+    case GET_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [action.payload.name]: action.payload.value,
+        },
+      };
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          category: "all",
+          company: "all",
+          color: "all",
+          price: state.filters.maxPrice,
+          shipping: false,
+        },
+      };
     default:
       return state;
   }

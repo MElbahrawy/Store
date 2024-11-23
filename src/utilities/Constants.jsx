@@ -9,6 +9,9 @@ export const SHOW_LIST = "SHOW_LIST";
 export const GET_SORT = "GET_SORT";
 export const SET_SORT = "SET_SORT";
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
+export const GET_FILTERS = "GET_FILTERS";
+export const SET_FILTERS = "SET_FILTERS";
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 export const allProductsUrl = "https://www.course-api.com/react-store-products";
 export const productUrl =

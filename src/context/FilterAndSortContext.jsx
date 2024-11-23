@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import FilterAndSortReducer from "./FilterAndSortReducer";
 import {
+  CLEAR_FILTERS,
+  GET_FILTERS,
   GET_SORT,
   LOAD_PRODUCTS,
   SET_SORT,
@@ -18,6 +20,16 @@ const initialState = {
   sort: "price-lowest",
   products: [],
   filteredProducts: [],
+  filters: {
+    text: "",
+    category: "all",
+    company: "all",
+    color: "all",
+    minPrice: 0,
+    maxPrice: 0,
+    price: 0,
+    shipping: false,
+  },
 };
 export const FilterAndSortProvider = ({ children }) => {
   const [state, dispatch] = useReducer(FilterAndSortReducer, initialState);
@@ -39,8 +51,37 @@ export const FilterAndSortProvider = ({ children }) => {
   const getSort = (e) => {
     dispatch({ type: GET_SORT, payload: e.target.value });
   };
+  const getFilter = (e) => {
+    const name = e.target.name;
+    let value = e.target.value;
+    if (name === "category" || name === "color") {
+      value = e.target.dataset.value;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
+    dispatch({ type: GET_FILTERS, payload: { name, value } });
+  };
+  const resetFilters = () => {
+    console.log("hi");
+
+    dispatch({ type: CLEAR_FILTERS });
+  };
   return (
-    <context.Provider value={{ state, showGrid, showList, getSort }}>
+    <context.Provider
+      value={{
+        state,
+        products,
+        showGrid,
+        showList,
+        getSort,
+        getFilter,
+        resetFilters,
+      }}
+    >
       {children}
     </context.Provider>
   );
