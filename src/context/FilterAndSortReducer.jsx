@@ -3,6 +3,7 @@ import {
   GET_FILTERS,
   GET_SORT,
   LOAD_PRODUCTS,
+  SET_FILTERS,
   SET_SORT,
   SHOW_GRID,
   SHOW_LIST,
@@ -60,6 +61,33 @@ export default function FilterAndSortReducer(state, action) {
           shipping: false,
         },
       };
+    case SET_FILTERS: {
+      let tempProducts = [...state.products];
+      const { text, category, company, color, price, shipping } = state.filters;
+      text &&
+        (tempProducts = tempProducts.filter((product) =>
+          product.name.toLowerCase().startsWith(text.toLowerCase())
+        ));
+      category !== "all" &&
+        (tempProducts = tempProducts.filter(
+          (product) => product.category === category
+        ));
+      company !== "all" &&
+        (tempProducts = tempProducts.filter(
+          (product) => product.company === company
+        ));
+      color !== "all" &&
+        (tempProducts = tempProducts.filter((product) =>
+          product.colors.includes(color)
+        ));
+      price !== state.filters.maxPrice &&
+        (tempProducts = tempProducts.filter(
+          (product) => product.price <= price
+        ));
+      shipping &&
+        (tempProducts = tempProducts.filter((product) => product.shipping));
+      return { ...state, filteredProducts: tempProducts };
+    }
     default:
       return state;
   }

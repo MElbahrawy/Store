@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Btn from "../utilities/Btn";
 import ColorBtn from "../utilities/ColorBtn";
+import { useCartContext } from "../../context/CartContext";
 
-export default function ProductAction({ colors = [], stock = 0 }) {
+export default function ProductAction({ product = {} }) {
+  const { colors, stock, id, price } = product;
+  const { addToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
   const [mainColor, setMainColor] = useState(colors[0]);
-
   const increase = () => {
     setQuantity((prev) => (prev < stock ? prev + 1 : prev));
   };
@@ -32,7 +34,11 @@ export default function ProductAction({ colors = [], stock = 0 }) {
         <span className="font-bold text-2xl">{quantity}</span>
         <button onClick={() => increase()}>+</button>
       </div>
-      <Btn>Add To Cart</Btn>
+      <Btn>
+        <button onClick={() => addToCart(id, mainColor, quantity, product)}>
+          Add To Cart
+        </button>
+      </Btn>
     </div>
   );
 }

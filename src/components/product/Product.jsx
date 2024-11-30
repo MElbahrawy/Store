@@ -46,9 +46,7 @@ export default function Product() {
               <span className="font-bold">Brand:</span> {product.company}
             </p>
             <hr />
-            {product.stock > 0 && (
-              <ProductAction colors={product.colors} stock={product.stock} />
-            )}
+            {product.stock > 0 && <ProductAction product={product} />}
           </div>
         </div>
       )}

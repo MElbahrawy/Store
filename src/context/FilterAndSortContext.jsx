@@ -5,6 +5,7 @@ import {
   GET_FILTERS,
   GET_SORT,
   LOAD_PRODUCTS,
+  SET_FILTERS,
   SET_SORT,
   SHOW_GRID,
   SHOW_LIST,
@@ -38,10 +39,11 @@ export const FilterAndSortProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
-  // for sorting
+  // for sorting and filtering
   useEffect(() => {
+    dispatch({ type: SET_FILTERS });
     dispatch({ type: SET_SORT });
-  }, [state.sort, products]);
+  }, [state.sort, products, state.filters]);
   const showGrid = () => {
     dispatch({ type: SHOW_GRID });
   };
@@ -66,8 +68,6 @@ export const FilterAndSortProvider = ({ children }) => {
     dispatch({ type: GET_FILTERS, payload: { name, value } });
   };
   const resetFilters = () => {
-    console.log("hi");
-
     dispatch({ type: CLEAR_FILTERS });
   };
   return (

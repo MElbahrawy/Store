@@ -12,6 +12,11 @@ export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 export const GET_FILTERS = "GET_FILTERS";
 export const SET_FILTERS = "SET_FILTERS";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
+export const ADD_CART = "ADD_CART";
+export const TOGGLE_AMOUNT = "TOGGLE_AMOUNT";
+export const REMOVE_CART = "REMOVE_CART";
+export const CLEAR_CART = "CLEAR_CART";
+export const COUNT_CART_TOTALS = "COUNT_CART_TOTALS";
 
 export const allProductsUrl = "https://www.course-api.com/react-store-products";
 export const productUrl =

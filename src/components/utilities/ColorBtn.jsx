@@ -5,7 +5,7 @@ export default function ColorBtn({ color, currentColor, getFilter }) {
       <button
         name="color"
         data-value={color}
-        className={`me-2 capitalize transition text-sm  mb-1 border-b-2 ${
+        className={`me-2 capitalize transition text-sm border-b-2 ${
           color === currentColor
             ? "border-black text-black"
             : "text-slate-400 border-white"
@@ -20,7 +20,7 @@ export default function ColorBtn({ color, currentColor, getFilter }) {
       <button
         name="color"
         data-value={color}
-        className={`w-5 h-5 rounded-full border  mr-2 mb-1 transition flex justify-center items-center text-white text-sm ${
+        className={`w-5 h-5 rounded-full border  mr-2 transition flex justify-center items-center text-white text-sm ${
           color === currentColor
             ? "opacity-100 border-black"
             : "border-gray-500  opacity-50"

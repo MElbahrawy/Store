@@ -26,6 +26,7 @@ export default function ProductListCard({ product }) {
         <Link to={`/products/${product?.id}}`}>
           <Btn>Details</Btn>
         </Link>
+        {/* <button>add to cart</button> */}
       </div>
     </div>
   );

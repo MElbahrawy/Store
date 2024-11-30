@@ -7,6 +7,7 @@ import Footer from "./components/utilities/Footer";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </>
